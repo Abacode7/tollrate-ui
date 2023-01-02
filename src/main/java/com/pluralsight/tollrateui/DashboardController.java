@@ -28,7 +28,7 @@ public class DashboardController {
         ReactiveCircuitBreaker rcb = circuitBreakerFactory.create("tollrate-cb");
 
         Mono<TollRate> rate = rcb.run(webClientBuilder.build().get()
-            .uri("http://tollrate-service/tollrate/" + stationId)
+            .uri("http://tollrate-service/tollrateslow/" + stationId)
             .retrieve()
             .bodyToMono(TollRate.class),
             throwable -> getDefault());
